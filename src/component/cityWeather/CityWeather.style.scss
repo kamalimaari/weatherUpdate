@@ -1,0 +1,28 @@
+.climate {
+  &__title {
+    text-align: center;
+    font-size: 45px;
+    margin: 1rem;
+  }
+
+  &__weather {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &__details {
+      background-color: DodgerBlue;
+      margin: 2rem;
+      width: 280px;
+    }
+
+    &__date {
+      font-size: 17px;
+    }
+
+    &__temperature {
+      font-size: 20px;
+    }
+  }
+}
