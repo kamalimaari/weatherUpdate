@@ -11,7 +11,7 @@ const CityWeather = ({weatherArray}) => {
                     return <div className="climate__weather__details">
                         <div className="climate__weather__date-temperature">
                             <div className="climate__weather__date">Date and Time: {data[0]}</div>
-                            <div className="climate__weather__temperature">Temperature: {data[1]}</div>
+                            <div className="climate__weather__temperature">Temperature: {data[1]} deg/celsius</div>
                         </div>
                     </div>
                 })}

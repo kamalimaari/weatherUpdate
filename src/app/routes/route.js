@@ -17,7 +17,8 @@ router.get('/weather', async (req, res) => {
         for( i; i < temperatureList.length;i++){
             if (date[i].includes('00:00:00')) {
                 let splitedDate = date[i].split(' ');
-                consolidatedList.push([splitedDate[0], temperatureList[i]])
+                let celciusConversion = (temperatureList[i] - 32) * 5/9;
+                consolidatedList.push([splitedDate[0], Math.floor(celciusConversion)]);
             }
         }
         return res.status(200).send(consolidatedList);
