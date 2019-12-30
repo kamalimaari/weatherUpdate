@@ -3,8 +3,6 @@ const express = require('express');
 const router = express.Router();
 router.get('/weather', async (req, res) => {
     try {
-        console.log('>>>>req',typeof (req.query.data));
-        console.log('>>>>backend');
         let city = req.query.data;
         const apiKey = '04ac9637ce9b18da89dad97840ffdd87';
         let url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
@@ -17,9 +15,11 @@ router.get('/weather', async (req, res) => {
         parsedAxiosData.map((rows,i) => date.push(rows.dt_txt));
         let i = 0;
         for( i; i < temperatureList.length;i++){
-            consolidatedList.push([date[i],temperatureList[i]])
+            if (date[i].includes('00:00:00')) {
+                let splitedDate = date[i].split(' ');
+                consolidatedList.push([splitedDate[0], temperatureList[i]])
+            }
         }
-        console.log(consolidatedList);
         return res.status(200).send(consolidatedList);
     }
     catch (err) {
